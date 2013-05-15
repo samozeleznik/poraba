@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  capacity: 1
+  model: MyString
+  computer_id: 
+
+two:
+  capacity: 1
+  model: MyString
+  computer_id: 
