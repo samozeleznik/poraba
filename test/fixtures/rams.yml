@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  capacity: 1
+  consumption: 1
+  computer_id: 
+
+two:
+  capacity: 1
+  consumption: 1
+  computer_id: 

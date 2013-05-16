@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name_string: MyString
+  consumption: 1
+  real_consumption: 1
+  computer_id: 
+
+two:
+  name_string: MyString
+  consumption: 1
+  real_consumption: 1
+  computer_id: 
