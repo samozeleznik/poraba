@@ -1,0 +1,21 @@
+<h1>Listing hdds</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hdds.each do |hdd| %>
+  <tr>
+    <td><%= link_to 'Show', hdd %></td>
+    <td><%= link_to 'Edit', edit_hdd_path(hdd) %></td>
+    <td><%= link_to 'Destroy', hdd, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Hdd', new_hdd_path %>
