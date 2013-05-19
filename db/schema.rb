@@ -13,10 +13,20 @@
 
 ActiveRecord::Schema.define(:version => 0) do
 
+  create_table "charts", :force => true do |t|
+    t.integer   "computer_id",  :null => false
+    t.integer   "ram_poraba",   :null => false
+    t.integer   "cpu_poraba",   :null => false
+    t.timestamp "time_updated", :null => false
+  end
+
+  add_index "charts", ["computer_id"], :name => "computer_id"
+
   create_table "computers", :force => true do |t|
-    t.string    "name",         :limit => 20, :null => false
-    t.string    "ip",           :limit => 20, :null => false
-    t.string    "gpu",          :limit => 50, :null => false
+    t.string    "name",         :limit => 20,                    :null => false
+    t.string    "ip",           :limit => 20,                    :null => false
+    t.string    "gpu",          :limit => 150,                   :null => false
+    t.boolean   "mining",                      :default => true, :null => false
     t.timestamp "time_updated"
   end
 

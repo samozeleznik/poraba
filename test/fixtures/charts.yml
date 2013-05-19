@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  computer_id: 
+  ram_poraba: 1
+  cpu_poraba: 1
+
+two:
+  computer_id: 
+  ram_poraba: 1
+  cpu_poraba: 1

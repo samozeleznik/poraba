@@ -4,10 +4,10 @@ class ComputersController < ApplicationController
   def index
     @computers = Computer.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @computers }
-    end
+    #respond_to do |format|
+      #format.html # index.html.erb
+      #format.json { render json: @computers }
+    #end
   end
 
   # GET /computers/1
@@ -78,6 +78,20 @@ class ComputersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to computers_url }
       format.json { head :no_content }
+    end
+  end
+
+  def stop_mining
+    @computer = Computer.find(params[:id])
+    if @computer.mining
+      @computer.mining=false
+    else
+      @computer.mining=true
+    end
+    @computer.save
+    respond_to do |format|
+        format.html { redirect_to root_path }
+        format.json { head :no_content }
     end
   end
 end

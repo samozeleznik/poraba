@@ -1,21 +1,41 @@
-<h1>Listing computers</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @computers.each do |computer| %>
-  <tr>
-    <td><%= link_to 'Show', computer %></td>
-    <td><%= link_to 'Edit', edit_computer_path(computer) %></td>
-    <td><%= link_to 'Destroy', computer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<h1>Vsi računalniki</h1>
+<table border="1">
+    <tr>
+       <td>Ime</td>
+       <td>IP</td>
+       <td>GPU</td>
+       <td>Procesor</td>
+       <td>Poraba procesorja</td>
+       <td>Matična plošča</td>
+       <td>Količina RAMa</td>
+       <td>Prosti RAM</td>
+       <td>Trdi disk</td>
+       <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <% @computers.each do |computer| %>
+      <td><%= computer.name %></td>
+      <td><%= computer.ip %></td>
+      <td><%= computer.gpu %></td>
+      <% computer.processors.each do |processor| %>
+      <td><%= processor.name %></td>
+      <td><%= processor.consumption %> %</td>
+      <% end %>
+      <% computer.motherboards.each do |motherboard| %>
+      <td><%= motherboard.manufacturer %> <%= motherboard.model %></td>
+      <% end %>
+      <% computer.rams.each do |ram| %>
+          <td><%= (((ram.capacity.to_f)/1024)/1024).round(2) %> GB</td>
+          <td><%= ((((ram.capacity.to_f)/1024)/1024).round(2) - (((ram.consumption.to_f)/1024)/1024).round(2)).round(2) %> GB</td>
+      <% end %>
+      <% computer.hdds.each do |hdd| %>
+          <td><%= hdd.model %> (<%= ((hdd.capacity.to_f/1024)/1024).round(2) %> GB)</td>
+      <% end %>
+      <% if computer.mining == true %>
+        <td><%= link_to 'Stop', stop_mining_path(computer.id) %></td>
+      <% else %>
+        <td><%= link_to 'Start', stop_mining_path(computer.id) %></td>
+      <% end %>
+    </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Computer', new_computer_path %>
